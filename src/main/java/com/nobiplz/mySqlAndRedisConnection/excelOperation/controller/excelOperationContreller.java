@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -34,7 +33,7 @@ public class excelOperationContreller {
         return;
       }
       Workbook workbook = excelOperationService.giveExcel((FileInputStream) file.getInputStream(),peopleType);
-      httpServletResponse.setHeader("Content-disposition", "attachment; filename=" + "peopleType"+".xls");
+      httpServletResponse.setHeader("Content-disposition", "attachment; filename=" + "xxxx"+".xls");
       OutputStream outputStream = httpServletResponse.getOutputStream();
       workbook.write(outputStream);
       outputStream.flush();

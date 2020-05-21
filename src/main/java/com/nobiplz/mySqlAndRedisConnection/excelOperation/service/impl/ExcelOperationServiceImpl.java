@@ -23,7 +23,7 @@ public class ExcelOperationServiceImpl implements ExcelOperationService {
   public Workbook giveExcel(FileInputStream fileInputStream,String peopleType) {
     try {
       //需要整合的部分
-      String advertiseType = "人群包"+peopleType; //面向目标人群
+      String advertiseType = peopleType; //面向目标人群
       //定位需要生成多少Row的
       int rowNumber = 0;
 
