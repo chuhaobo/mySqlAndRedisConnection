@@ -1,5 +1,6 @@
 package com.nobiplz.mySqlAndRedisConnection.enterInUser.controller;
 
+import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.nobiplz.mySqlAndRedisConnection.enterInUser.entity.UserPo;
 import com.nobiplz.mySqlAndRedisConnection.enterInUser.service.UserService;
 import io.swagger.annotations.Api;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @Api(value = "人员操作接口", description = "人员操作接口")
 @RequestMapping("/userOperation")
-public class UserController {
+public class UserController  extends ApiController {
 
   @Autowired
   UserService userService;
