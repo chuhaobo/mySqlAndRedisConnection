@@ -1,8 +1,10 @@
 package com.nobiplz.mySqlAndRedisConnection.enterInUser.service;
 
 import com.nobiplz.mySqlAndRedisConnection.enterInUser.entity.UserPo;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface UserService {
 
-  public Boolean insertUser(UserPo userPo);
+   Boolean insertUser(UserPo userPo);
 }
