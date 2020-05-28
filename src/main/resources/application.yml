@@ -7,45 +7,35 @@ spring:
   devtools:
     restart:
       enabled: false
-
-  # H2 DATABASE CONFIG
-datasource:
-  driver-class-name: com.mysql.jdbc.Driver
-  username: root
-  password: orcl
-  url:  jdbc:mysql://localhost:3306/premission?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
-
-
-#mybatis
+####################################################################################
+###################################MyBatis Plus Config##############################
+####################################################################################
 mybatis-plus:
   mapper-locations: classpath:/mapper/*Mapper.xml
-  #实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: com.baomidou.springboot.entity
-  typeEnumsPackage: com.baomidou.springboot.entity.enums
+  typeAliasesPackage: com.nobiplz.mySqlAndRedisConnection.**.entity
+  #  typeEnumsPackage: com.ly.cloud.domain.enums
   global-config:
-    # 数据库相关配置
-    db-config:
-      #主键类型  AUTO:"数据库ID自增", INPUT:"用户输入ID",ID_WORKER:"全局唯一ID (数字类型唯一ID)", UUID:"全局唯一ID UUID";
-      id-type: id_worker
-      #字段策略 IGNORED:"忽略判断",NOT_NULL:"非 NULL 判断"),NOT_EMPTY:"非空判断"
-      field-strategy: not_empty
-      #驼峰下划线转换
-      column-underline: true
-      #数据库大写下划线转换
-      #capital-mode: true
-      #逻辑删除配置
-      logic-delete-value: 0
-      logic-not-delete-value: 1
-      db-type: h2
+    #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+    id-type: 3
+    #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+    field-strategy: 1
+    #驼峰下划线转换
+    db-column-underline: true
     #刷新mapper 调试神器
-    refresh: true
-  # 原生配置
+    refresh-mapper: true
+    #数据库大写下划线转换
+    #capital-mode: true
+    #序列接口实现类配置
+    #key-generator: com.baomidou.springboot.xxx
+    #逻辑删除配置
+    logic-delete-value: 0
+    logic-not-delete-value: 1
+    #自定义填充策略接口实现
+    #meta-object-handler: com.baomidou.mybatisplus.mapper.MetaObjectHandler
+    #自定义SQL注入器 逻辑删除SQL注入器
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
-##logging
-#logging:
-#  level: warn
 
 
 redis:

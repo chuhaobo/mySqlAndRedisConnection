@@ -6,10 +6,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+@EnableTransactionManagement
 @EnableCaching
-@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
-@MapperScan("com.baomidou.mybatisplus.samples.quickstart.mapper")
+@SpringBootApplication
+@ComponentScan(basePackages = {
+  "com.nobiplz.mySqlAndRedisConnection.config",
+  "com.nobiplz.mySqlAndRedisConnection.enterInUser.controller",
+"com.nobiplz.mySqlAndRedisConnection.enterInUser.service"})
 /*@ComponentScan(basePackages ={ "com.nobiplz.mySqlAndRedisConnection"})*/
 public class MySqlAndRedisConnectionApplication {
 

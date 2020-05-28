@@ -6,7 +6,6 @@ import com.nobiplz.mySqlAndRedisConnection.enterInUser.entity.UserPo;
 import org.apache.ibatis.annotations.Mapper;
 
 
-@Mapper
 public interface UserMapper  extends BaseMapper<UserPo> {
 
 }
