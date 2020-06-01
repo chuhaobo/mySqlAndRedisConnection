@@ -18,7 +18,7 @@ public class UserController  extends ApiController {
   @Autowired
   UserService userService;
 
-  @ApiOperation(value = "新增user", httpMethod = "GET")
+  @ApiOperation(value = "新增user", httpMethod = "POST")
   @RequestMapping(value = "insertUser",method = RequestMethod.POST)
   public boolean insertUser(UserPo userPo){
     try{
