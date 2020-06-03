@@ -1,6 +1,7 @@
 package com.nobiplz.mySqlAndRedisConnection.enterInUser.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
@@ -14,7 +15,7 @@ public class UserPo implements Serializable {
   private static final long serialVersionUID = -3946734305303957850L;
 
 
-  @TableField("id")
+  @TableId("id")
   private String id;
 
   @TableField("name")

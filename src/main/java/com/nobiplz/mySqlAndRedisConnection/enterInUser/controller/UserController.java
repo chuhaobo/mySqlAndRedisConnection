@@ -28,4 +28,33 @@ public class UserController  extends ApiController {
     }
   }
 
+  @ApiOperation(value = "删除User",httpMethod = "DELETE")
+  @RequestMapping(value = "deleteUser",method = RequestMethod.DELETE)
+  public  Boolean deleteUser(UserPo userPo){
+    try{
+      return userService.deleteUser(userPo);
+    }catch (Exception e){
+      throw new RuntimeException(e.getMessage());
+    }
+  }
+
+  @ApiOperation(value = "查询User",httpMethod = "GET")
+  @RequestMapping(value = "selectUser",method = RequestMethod.GET)
+  public  UserPo selectUser(UserPo userPo){
+    try{
+      return userService.selectUser(userPo);
+    }catch (Exception e){
+      throw new RuntimeException(e.getMessage());
+    }
+  }
+
+  @ApiOperation(value = "修改User",httpMethod = "POST")
+  @RequestMapping(value = "updateUser",method = RequestMethod.POST)
+  public  Boolean updateUser(UserPo userPo){
+    try{
+      return userService.updateUser(userPo);
+    }catch (Exception e){
+      throw new RuntimeException(e.getMessage());
+    }
+  }
 }

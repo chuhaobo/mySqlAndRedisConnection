@@ -9,4 +9,10 @@ import org.springframework.stereotype.Repository;
 public interface UserService extends IService<UserPo> {
 
    Boolean insertUser(UserPo userPo);
+
+   Boolean updateUser(UserPo userPo);
+
+    UserPo selectUser(UserPo userPo);
+
+    Boolean deleteUser(UserPo userPo);
 }
