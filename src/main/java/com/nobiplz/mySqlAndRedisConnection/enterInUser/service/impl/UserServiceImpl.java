@@ -36,7 +36,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper,UserPo> implements U
    * @return
    */
   @Override
-  @Cacheable(cacheNames = "nobiCache")
+  @Cacheable(cacheNames = "nobiCache",key = "#userPo.id")
   public Boolean insertUser(UserPo userPo) {
     try{
       userMapper.insert(userPo);
@@ -84,27 +84,27 @@ public class UserServiceImpl extends ServiceImpl<UserMapper,UserPo> implements U
    * 可以通过@Caching注解将多个注解策略组合到一个方法上
    * @Caching注解可以让我们在一个方法或者类上同时指定多个Spring Cache相关的注解。其拥有三个属性：cacheable、put和evict，分别用于指定@Cacheable、@CachePut和@CacheEvict。
    *
-   * 作者：一个痴
-   * 链接：https://www.jianshu.com/p/7e296d730213
-   * 来源：简书
-   * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
    * @param userPo
    * @return
    */
   @Override
   //定义复杂的缓存规则
+/*
   @Caching(
     cacheable = {
-      @Cacheable(/*value = "emp",*/key = "#userPo.id")
+      @Cacheable(value = "nobiCache",key = "#userPo.id")
     },
     put = {
       //先执行方法
-      @CachePut(/*value = "emp",*/key = "#userPo.name"),
-      @CachePut(/*value = "emp",*/key = "#userPo.password")
+      @CachePut(value = "nobiCache",key = "#userPo.name"),
+      @CachePut(value = "nobiCache",key = "#userPo.password")
     }
   )
+*/
+  @Cacheable(cacheNames = "nobiCache",key = "#userPo.id")
   public UserPo selectUser(UserPo userPo) {
-    return null;
+   UserPo userPo1 = userMapper.selectById(userPo.getId());
+   return userPo1;
   }
 
   /**
@@ -125,7 +125,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper,UserPo> implements U
    *
    */
   @Override
-  @CachePut(key = "#userPo.id")
+  @CachePut(value = "nobiCache",key = "#userPo.id")
   public Boolean updateUser(UserPo userPo) {
     try{
       userMapper.updateById(userPo);
